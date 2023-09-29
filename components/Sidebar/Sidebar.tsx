@@ -31,7 +31,7 @@ const SideBar: FC<ISidebarProps> = ({ children }) => {
     [],
   );
   return (
-    <div className="flex h-full">
+    <div className="flex h-full mx-2 md:mx-0 md:mr-2">
       <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2">
         <Box>
           <div className={"flex flex-col gay-y-4 px-5 py-4"}>
