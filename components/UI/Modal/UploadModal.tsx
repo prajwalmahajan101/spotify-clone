@@ -37,7 +37,6 @@ const UploadModal = () => {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
-    // TODO: Upload to Supabase
     try {
       const imageFile = values.image?.[0];
       const songFile = values.song?.[0];
