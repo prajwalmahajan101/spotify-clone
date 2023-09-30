@@ -73,6 +73,7 @@ const Header: FC<IHeaderProps> = ({ children, className }) => {
             className={
               "rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
             }
+            onClick={() => router.push("/")}
           >
             <HiHome className={"text-black"} size={20} />
           </button>
@@ -80,6 +81,7 @@ const Header: FC<IHeaderProps> = ({ children, className }) => {
             className={
               "rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition"
             }
+            onClick={() => router.push("/search")}
           >
             <BiSearch className={"text-black"} size={20} />
           </button>
