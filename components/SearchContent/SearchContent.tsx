@@ -1,7 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import { ISong } from "@/types/Song.types";
-import MediaItem from "@/components/MediaItem/MediaItem";
+import MediaItem from "@/components/UI/MediaItem/MediaItem";
 import LikeButton from "@/components/UI/Button/LikeButton";
 
 interface ISearchContentProps {

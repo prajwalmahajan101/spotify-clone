@@ -3,7 +3,7 @@ import React, { FC, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/user/useUser";
 import { ISong } from "@/types/Song.types";
-import MediaItem from "@/components/MediaItem/MediaItem";
+import MediaItem from "@/components/UI/MediaItem/MediaItem";
 import LikeButton from "@/components/UI/Button/LikeButton";
 
 interface ILikedContentProps {

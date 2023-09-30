@@ -7,7 +7,7 @@ import useAuthModal from "@/hooks/ui/useAuthModal";
 import { useUser } from "@/hooks/user/useUser";
 import useUploadModal from "@/hooks/ui/useUploadModal";
 import { ISong } from "@/types/Song.types";
-import MediaItem from "@/components/MediaItem/MediaItem";
+import MediaItem from "@/components/UI/MediaItem/MediaItem";
 
 interface ILibraryProps {
   songs: ISong[];
