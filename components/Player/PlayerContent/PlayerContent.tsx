@@ -7,7 +7,8 @@ import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import Slider from "@/components/Player/PlayerContent/Slider/Slider";
 import usePlayer from "@/hooks/player/usePlayer";
-import useSound from "use-sound";
+// @ts-ignore
+import { useSound } from "use-sound";
 
 interface IPlayerContentProps {
   song: ISong;
