@@ -1,7 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import { ISong } from "@/types/Song.types";
-import useLoadImage from "@/hooks/ui/useLoadImage";
+import useLoadImage from "@/hooks/images/useLoadImage";
 import Image from "next/image";
 import PlayButton from "@/components/UI/Button/PlayButton";
 
