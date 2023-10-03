@@ -13,7 +13,9 @@ const Player = () => {
 
   if (!song || !songUrl || !player.activeId) return null;
   return (
-    <div className={`fixed bottom-0 bg-black w-full py-2 h-[80px] px-4`}>
+    <div
+      className={`fixed bottom-0 bg-neutral-900 mx-[0.5rem] w-[calc(100%-1rem)] py-2 h-[80px] px-4 rounded-t-lg`}
+    >
       <PlayerContent key={songUrl} song={song} songUrl={songUrl} />
     </div>
   );
