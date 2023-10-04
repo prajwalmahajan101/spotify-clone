@@ -92,6 +92,7 @@ const Header: FC<IHeaderProps> = ({ children, className }) => {
               <Link
                 href={"https://github.com/prajwalmahajan101/spotify-clone"}
                 target="_blank"
+                className={"hidden md:flex"}
               >
                 <Button
                   className={
