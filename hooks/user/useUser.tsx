@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { SupabaseClient } from "@supabase/supabase-js";
 import { User } from "@supabase/auth-helpers-nextjs";
 import {
   useSessionContext,
@@ -36,13 +35,14 @@ export const MyUserContextProvider = (props: Props) => {
   const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
   const [userDetails, setUserDetails] = useState<IUserDetails | null>(null);
   const [subscription, setSubscription] = useState<ISubscription | null>(null);
-  const getUserDetails = (supabase: SupabaseClient<any, "public", any>) => {
+
+  const getUserDetails = () => {
     return supabase.from("users").select("*").single();
   };
-  const getSubscription = (supabase: SupabaseClient<any, "public", any>) => {
+  const getSubscription = () => {
     return supabase
       .from("subscriptions")
-      .select("*,prices(*,products(*))")
+      .select("*, prices(*, products(*))")
       .in("status", ["trialing", "active"])
       .single();
   };
@@ -50,22 +50,19 @@ export const MyUserContextProvider = (props: Props) => {
   useEffect(() => {
     if (user && !isLoadingData && !userDetails && !subscription) {
       setIsLoadingData(true);
+      Promise.allSettled([getUserDetails(), getSubscription()]).then(
+        (results) => {
+          const userDetailsPromise = results[0];
+          const subscriptionPromise = results[1];
+          if (userDetailsPromise.status === "fulfilled") {
+            setUserDetails(userDetailsPromise.value.data as IUserDetails);
+          }
+          if (subscriptionPromise.status === "fulfilled")
+            setSubscription(subscriptionPromise.value.data as ISubscription);
 
-      Promise.allSettled([getUserDetails, getSubscription]).then((results) => {
-        const userDetailsPromise = results[0];
-        const subscriptionPromise = results[1];
-
-        if (userDetailsPromise.status === "fulfilled") {
-          console.log(userDetailsPromise.value);
-          // setUserDetails(userDetailsPromise.value.data as IUserDetails);
-        }
-
-        if (subscriptionPromise.status === "fulfilled") {
-          // setSubscription(subscriptionPromise.value.data as ISubscription);
-        }
-
-        setIsLoadingData(false);
-      });
+          setIsLoadingData(false);
+        },
+      );
     } else if (!user && !isLoadingUser && !isLoadingData) {
       setUserDetails(null);
       setSubscription(null);
