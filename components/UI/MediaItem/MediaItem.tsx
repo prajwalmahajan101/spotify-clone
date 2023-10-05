@@ -16,8 +16,6 @@ const MediaItem: FC<IMediaItemProps> = ({ onClick, data }) => {
       return onClick(data.id);
     }
 
-    // TODO: Default turn on player
-
     return;
   };
   return (

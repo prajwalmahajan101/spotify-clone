@@ -18,6 +18,7 @@ import { useUser } from "@/hooks/user/useUser";
 import useAuthModal from "@/hooks/ui/useAuthModal";
 
 import Button from "@/components/UI/Button/Button";
+import usePlayer from "@/hooks/player/usePlayer";
 
 interface IHeaderProps {
   children: ReactNode;
@@ -30,10 +31,10 @@ const Header: FC<IHeaderProps> = ({ children, className }) => {
 
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
-
+  const player = usePlayer();
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
-    //   TODO: Reset any playing songs
+    player.reset();
     router.refresh();
     if (error) {
       toast.error(error.message);
@@ -96,10 +97,10 @@ const Header: FC<IHeaderProps> = ({ children, className }) => {
               >
                 <Button
                   className={
-                    "flex w-auto gap-x-2 items-center justify-center bg-neutral-900 text-white lg:w-[180px]  lg:py-2"
+                    "flex w-auto gap-x-2 items-center  justify-center bg-white lg:w-[180px] p-1.5"
                   }
                 >
-                  <AiFillGithub size={20} />
+                  <AiFillGithub size={30} color={"#000000"} />
                   <p className={"hidden lg:flex"}>Github Repo</p>
                 </Button>
               </Link>
